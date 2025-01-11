@@ -1,0 +1,1 @@
+select count(*) ,season from matches group by season;

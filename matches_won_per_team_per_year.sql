@@ -1,0 +1,1 @@
+ select count(*),season,winner from matches group by winner,season;
