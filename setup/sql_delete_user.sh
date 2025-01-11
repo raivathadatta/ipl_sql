@@ -8,12 +8,10 @@ POSTGRES_PASSWORD="4123"   # Your PostgreSQL admin password
 POSTGRES_HOST="localhost"  # Change if not localhost
 POSTGRES_PORT="5432"       # Change if your PostgreSQL runs on a different port
 
-# Export admin credentials
 export PGPASSWORD=$POSTGRES_PASSWORD
 
 echo "Cleaning up PostgreSQL user and database..."
 
-# Execute PostgreSQL commands
 psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER -v ON_ERROR_STOP=1 <<-EOSQL
     DROP DATABASE IF EXISTS $DB_NAME;
     DROP USER IF EXISTS $DB_USER;
@@ -25,5 +23,4 @@ else
     echo "An error occurred during the cleanup process."
 fi
 
-# Unset password variable for security
 unset PGPASSWORD
